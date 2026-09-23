@@ -1,24 +1,22 @@
 # 🚀 Aerospace Math Lab
 
-Laboratório em Python para estudar **matemática aplicada à engenharia aeroespacial**, começando pela equação do foguete de Tsiolkovsky.
+Laboratório em Python para estudar **matemática aplicada à engenharia aeroespacial**, começando pela equação do foguete de Tsiolkovsky e evoluindo para uma simulação numérica simplificada de lançamento.
 
-> Este projeto é um laboratório educacional de cálculos. A implementação atual não simula uma trajetória orbital completa.
+> O projeto é educacional. A simulação atual representa um lançamento vertical em 1D e não é um simulador orbital completo.
 
 ## 🎯 Objetivos
 
 - Implementar a equação do foguete de Tsiolkovsky.
-- Praticar matemática aplicada em código.
-- Trabalhar com validação de entradas e exceções.
-- Criar testes automatizados para cálculos científicos.
-- Manter uma estrutura de projeto simples e profissional.
+- Transformar equações físicas em código.
+- Simular a evolução de altitude, velocidade, massa e aceleração ao longo do tempo.
+- Praticar integração numérica com o método de Euler.
+- Trabalhar com validação de parâmetros e testes automatizados.
 
 ## 🧮 Equação de Tsiolkovsky
 
-A variação de velocidade é calculada por:
+A variação ideal de velocidade é calculada por:
 
 **Δv = vₑ × ln(m₀ / m_f)**
-
-Onde:
 
 | Variável | Significado | Unidade |
 |---|---|---|
@@ -27,13 +25,37 @@ Onde:
 | m₀ | Massa inicial | kg |
 | m_f | Massa final | kg |
 
-A implementação valida se a velocidade de exaustão é positiva, se a massa final é maior que zero e se a massa inicial é maior que a massa final.
+## 🚀 Simulação de lançamento
+
+A simulação usa um modelo vertical simplificado. Em cada passo de tempo, o programa calcula:
+
+- empuxo;
+- massa restante;
+- gravidade em função da altitude;
+- aceleração;
+- velocidade;
+- altitude.
+
+A integração é feita pelo **método de Euler**.
+
+### Hipóteses do modelo
+
+- movimento vertical unidimensional;
+- empuxo constante durante a queima;
+- vazão mássica constante;
+- gravidade variável com a altitude;
+- sem arrasto atmosférico;
+- sem rotação da Terra;
+- sem controle de atitude.
+
+Essas simplificações tornam o projeto adequado para estudo de programação e matemática aplicada, mas os resultados não devem ser interpretados como uma previsão de uma missão real.
 
 ## ✨ Funcionalidades
 
 - Cálculo de delta-v.
+- Simulação numérica de lançamento.
+- Evolução de altitude, velocidade, massa e aceleração.
 - Validação de parâmetros físicos básicos.
-- Exemplo executável via terminal.
 - Testes automatizados com `unittest`.
 - Zero dependências externas.
 
@@ -46,13 +68,19 @@ git clone https://github.com/marcellabongiolo/aerospace-math-lab.git
 cd aerospace-math-lab
 ```
 
-### 2. Executar a demonstração
+### 2. Executar o cálculo de Tsiolkovsky
 
 ```bash
 python tsiolkovsky_calculator.py
 ```
 
-### 3. Executar os testes
+### 3. Executar a simulação
+
+```bash
+python launch_simulation.py
+```
+
+### 4. Executar os testes
 
 ```bash
 python -m unittest discover -s tests -v
@@ -66,10 +94,12 @@ aerospace-math-lab/
 │   └── workflows/
 │       └── tests.yml
 ├── tests/
+│   ├── test_launch_simulation.py
 │   └── test_tsiolkovsky_calculator.py
 ├── .gitignore
 ├── LICENSE
 ├── README.md
+├── launch_simulation.py
 └── tsiolkovsky_calculator.py
 ```
 
@@ -78,19 +108,24 @@ aerospace-math-lab/
 - Python
 - Matemática aplicada
 - Equações de foguetes
+- Mecânica básica
+- Integração numérica
 - Funções e classes
+- Dataclasses
 - Validação de dados
 - Exceções
 - Testes automatizados
-- Complexidade e precisão numérica
+- Precisão numérica
 
 ## 🔭 Próximas extensões
 
+- Gráficos de altitude × tempo e velocidade × tempo.
+- Arrasto atmosférico.
+- Estágios de foguete.
 - Calculadora de impulso específico.
 - Conversões entre unidades.
-- Comparação entre diferentes estágios de foguete.
-- Modelos mais completos de delta-v.
-- Estudos de mecânica orbital.
+- Modelos de trajetória 2D.
+- Mecânica orbital e órbitas simplificadas.
 
 ## 👩‍💻 Autora
 
