@@ -1,36 +1,103 @@
-<div align="center">
+# 🚀 Aerospace Math Lab
 
-# 🚀 AEROSPACE MATH LAB 🌌
+Laboratório em Python para estudar **matemática aplicada à engenharia aeroespacial**, começando pela equação do foguete de Tsiolkovsky.
 
-<img src="https://img.shields.io/badge/FOCUS-ROCKET_SCIENCE_%26_MATH-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/LANGUAGE-PYTHON-yellow?style=for-the-badge&logo=python&logoColor=black" />
-<img src="https://img.shields.io/badge/STATUS-ACTIVE-success?style=for-the-badge" />
+> Este projeto é um laboratório educacional de cálculos. A implementação atual não simula uma trajetória orbital completa.
 
-> *“Simulating orbital mechanics and rocket equations with clean Python logic.”*
+## 🎯 Objetivos
 
-</div>
+- Implementar a equação do foguete de Tsiolkovsky.
+- Praticar matemática aplicada em código.
+- Trabalhar com validação de entradas e exceções.
+- Criar testes automatizados para cálculos científicos.
+- Manter uma estrutura de projeto simples e profissional.
 
----
+## 🧮 Equação de Tsiolkovsky
 
-## 🔬 About This Repository
+A variação de velocidade é calculada por:
 
-Welcome to my **aerospace-math-lab**! This repository explores the core mathematical formulas used in rocketry and space exploration—inspired by orbital mechanics and the physics of spaceflight.
+**Δv = vₑ × ln(m₀ / m_f)**
 
-### 📂 What You Will Find Here:
-* **The Rocket Equation:** Calculating delta-v ($\Delta v$) based on mass ratio and exhaust velocity.
-* **Orbital Mechanics:** Simulating basic trajectory and velocity requirements.
-* **Modular Code:** Clean Python implementations of complex physics formulas.
+Onde:
 
----
+| Variável | Significado | Unidade |
+|---|---|---|
+| Δv | Variação de velocidade | m/s |
+| vₑ | Velocidade de exaustão | m/s |
+| m₀ | Massa inicial | kg |
+| m_f | Massa final | kg |
 
-## 👩‍💻 Author
+A implementação valida se a velocidade de exaustão é positiva, se a massa final é maior que zero e se a massa inicial é maior que a massa final.
 
-<div align="center">
+## ✨ Funcionalidades
 
-**Marcella Bongiolo**  
-*Future Software Engineer | UNESC Student*
+- Cálculo de delta-v.
+- Validação de parâmetros físicos básicos.
+- Exemplo executável via terminal.
+- Testes automatizados com `unittest`.
+- Zero dependências externas.
 
-[![GitHub Badge](https://img.shields.io/badge/GitHub-marcellabongiolo-181717?style=flat-square&logo=github)](https://github.com/marcellabongiolo)
-[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-marcellabongiolo-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/marcellabongiolo)
+## 🚀 Como executar
 
-</div>
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/marcellabongiolo/aerospace-math-lab.git
+cd aerospace-math-lab
+```
+
+### 2. Executar a demonstração
+
+```bash
+python tsiolkovsky_calculator.py
+```
+
+### 3. Executar os testes
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+## 📁 Estrutura
+
+```text
+aerospace-math-lab/
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── tests/
+│   └── test_tsiolkovsky_calculator.py
+├── .gitignore
+├── LICENSE
+├── README.md
+└── tsiolkovsky_calculator.py
+```
+
+## 🧪 Conceitos praticados
+
+- Python
+- Matemática aplicada
+- Equações de foguetes
+- Funções e classes
+- Validação de dados
+- Exceções
+- Testes automatizados
+- Complexidade e precisão numérica
+
+## 🔭 Próximas extensões
+
+- Calculadora de impulso específico.
+- Conversões entre unidades.
+- Comparação entre diferentes estágios de foguete.
+- Modelos mais completos de delta-v.
+- Estudos de mecânica orbital.
+
+## 👩‍💻 Autora
+
+**Marcella Bongiolo**
+
+[GitHub](https://github.com/marcellabongiolo) · [LinkedIn](https://linkedin.com/in/marcellabongiolo)
+
+## 📄 Licença
+
+Este projeto está disponível sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE).
