@@ -30,6 +30,19 @@ class TestSimuladorLancamento(unittest.TestCase):
         self.assertGreater(estados[-1].altitude, 0)
         self.assertGreater(estados[-1].velocidade, 0)
 
+    def test_simulacao_para_ao_tocar_o_solo(self):
+        simulador = SimuladorLancamento(
+            massa_inicial=10_000,
+            massa_seca=9_000,
+            empuxo=1,
+            vazao_massa=0.1,
+        )
+
+        estados = simulador.simular(duracao=120, passo=0.1)
+
+        self.assertEqual(estados[-1].altitude, 0.0)
+        self.assertEqual(estados[-1].velocidade, 0.0)
+
     def test_parametros_invalidos(self):
         with self.assertRaises(ValueError):
             SimuladorLancamento(0, 15_000, 3_000_000, 800)
