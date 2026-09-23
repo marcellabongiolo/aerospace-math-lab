@@ -17,8 +17,6 @@ transformadas em uma simulação computacional.
 """
 
 from dataclasses import dataclass
-import math
-
 
 RAIO_TERRA_M = 6_371_000.0
 GRAVIDADE_SUPERFICIE = 9.80665
@@ -112,9 +110,27 @@ class SimuladorLancamento:
             else:
                 massa_nova = massa
 
-            aceleracao_media = aceleracao
-            velocidade += aceleracao_media * dt
-            altitude = max(0.0, altitude + velocidade * dt)
+            velocidade_nova = velocidade + aceleracao * dt
+            altitude_nova = altitude + velocidade_nova * dt
+
+            if altitude_nova <= 0 and velocidade_nova < 0 and tempo > 0:
+                altitude = 0.0
+                velocidade = 0.0
+                massa = massa_nova
+                tempo += dt
+                estados.append(
+                    EstadoSimulacao(
+                        tempo=tempo,
+                        altitude=altitude,
+                        velocidade=velocidade,
+                        massa=massa,
+                        aceleracao=aceleracao,
+                    )
+                )
+                break
+
+            velocidade = velocidade_nova
+            altitude = max(0.0, altitude_nova)
             massa = massa_nova
             tempo += dt
 
