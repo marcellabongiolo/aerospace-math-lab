@@ -37,7 +37,7 @@ A simulação usa um modelo vertical simplificado. Em cada passo de tempo, o pro
 - velocidade;
 - altitude.
 
-A integração é feita por um esquema de Euler.
+A integração é feita por um esquema de Euler. O modelo também trata o contato com o solo para evitar que a altitude permaneça artificialmente abaixo de zero.
 
 ### Hipóteses do modelo
 
@@ -86,6 +86,7 @@ A visualização requer **Matplotlib**.
 - Cálculo de delta-v.
 - Simulação numérica de lançamento.
 - Evolução de altitude, velocidade, massa e aceleração.
+- Tratamento do contato com o solo.
 - Validação de parâmetros físicos básicos.
 - Testes automatizados com `unittest`.
 - Visualização estática e animação com Matplotlib.
