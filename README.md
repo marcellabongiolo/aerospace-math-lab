@@ -11,6 +11,7 @@ Laboratório em Python para estudar **matemática aplicada à engenharia aeroesp
 - Simular a evolução de altitude, velocidade, massa e aceleração ao longo do tempo.
 - Praticar integração numérica com o método de Euler.
 - Trabalhar com validação de parâmetros e testes automatizados.
+- Visualizar a evolução do lançamento por gráficos e animação.
 
 ## 🧮 Equação de Tsiolkovsky
 
@@ -36,7 +37,7 @@ A simulação usa um modelo vertical simplificado. Em cada passo de tempo, o pro
 - velocidade;
 - altitude.
 
-A integração é feita pelo **método de Euler**.
+A integração é feita por um esquema de Euler.
 
 ### Hipóteses do modelo
 
@@ -50,6 +51,36 @@ A integração é feita pelo **método de Euler**.
 
 Essas simplificações tornam o projeto adequado para estudo de programação e matemática aplicada, mas os resultados não devem ser interpretados como uma previsão de uma missão real.
 
+## 📊 Visualização
+
+O projeto inclui duas formas de visualizar os dados:
+
+### Gráficos estáticos
+
+```bash
+python plot_simulation.py
+```
+
+O script gera:
+
+- `altitude_tempo.png`
+- `velocidade_tempo.png`
+- `massa_tempo.png`
+
+### Animação
+
+```bash
+python animate_simulation.py
+```
+
+A animação acompanha o lançamento ao longo do tempo e exibe:
+
+- altitude do foguete;
+- velocidade;
+- massa restante.
+
+A visualização requer **Matplotlib**.
+
 ## ✨ Funcionalidades
 
 - Cálculo de delta-v.
@@ -57,7 +88,8 @@ Essas simplificações tornam o projeto adequado para estudo de programação e 
 - Evolução de altitude, velocidade, massa e aceleração.
 - Validação de parâmetros físicos básicos.
 - Testes automatizados com `unittest`.
-- Visualização opcional com Matplotlib.
+- Visualização estática e animação com Matplotlib.
+- Integração contínua para os testes.
 
 ## 🚀 Como executar
 
@@ -68,35 +100,37 @@ git clone https://github.com/marcellabongiolo/aerospace-math-lab.git
 cd aerospace-math-lab
 ```
 
-### 2. Executar o cálculo de Tsiolkovsky
-
-```bash
-python tsiolkovsky_calculator.py
-```
-
-### 3. Executar a simulação
-
-```bash
-python launch_simulation.py
-```
-
-### 4. Gerar os gráficos da simulação
-
-Instale a dependência de visualização:
+### 2. Instalar as dependências de visualização
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Depois execute:
+### 3. Executar o cálculo de Tsiolkovsky
+
+```bash
+python tsiolkovsky_calculator.py
+```
+
+### 4. Executar a simulação
+
+```bash
+python launch_simulation.py
+```
+
+### 5. Gerar os gráficos
 
 ```bash
 python plot_simulation.py
 ```
 
-O script gera os gráficos `altitude_tempo.png`, `velocidade_tempo.png` e `massa_tempo.png`.
+### 6. Executar a animação
 
-### 5. Executar os testes
+```bash
+python animate_simulation.py
+```
+
+### 7. Executar os testes
 
 ```bash
 python -m unittest discover -s tests -v
@@ -115,6 +149,7 @@ aerospace-math-lab/
 ├── .gitignore
 ├── LICENSE
 ├── README.md
+├── animate_simulation.py
 ├── launch_simulation.py
 ├── plot_simulation.py
 ├── requirements.txt
@@ -135,10 +170,10 @@ aerospace-math-lab/
 - Testes automatizados
 - Precisão numérica
 - Visualização de dados científicos
+- Animação de dados
 
 ## 🔭 Próximas extensões
 
-- Visualização com gráficos de altitude, velocidade e massa.
 - Arrasto atmosférico.
 - Estágios de foguete.
 - Calculadora de impulso específico.
