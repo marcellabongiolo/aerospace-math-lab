@@ -57,7 +57,7 @@ Essas simplificações tornam o projeto adequado para estudo de programação e 
 - Evolução de altitude, velocidade, massa e aceleração.
 - Validação de parâmetros físicos básicos.
 - Testes automatizados com `unittest`.
-- Zero dependências externas.
+- Visualização opcional com Matplotlib.
 
 ## 🚀 Como executar
 
@@ -80,7 +80,23 @@ python tsiolkovsky_calculator.py
 python launch_simulation.py
 ```
 
-### 4. Executar os testes
+### 4. Gerar os gráficos da simulação
+
+Instale a dependência de visualização:
+
+```bash
+pip install -r requirements.txt
+```
+
+Depois execute:
+
+```bash
+python plot_simulation.py
+```
+
+O script gera os gráficos `altitude_tempo.png`, `velocidade_tempo.png` e `massa_tempo.png`.
+
+### 5. Executar os testes
 
 ```bash
 python -m unittest discover -s tests -v
@@ -100,6 +116,8 @@ aerospace-math-lab/
 ├── LICENSE
 ├── README.md
 ├── launch_simulation.py
+├── plot_simulation.py
+├── requirements.txt
 └── tsiolkovsky_calculator.py
 ```
 
@@ -116,10 +134,11 @@ aerospace-math-lab/
 - Exceções
 - Testes automatizados
 - Precisão numérica
+- Visualização de dados científicos
 
 ## 🔭 Próximas extensões
 
-- Gráficos de altitude × tempo e velocidade × tempo.
+- Visualização com gráficos de altitude, velocidade e massa.
 - Arrasto atmosférico.
 - Estágios de foguete.
 - Calculadora de impulso específico.
