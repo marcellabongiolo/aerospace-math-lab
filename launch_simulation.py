@@ -16,6 +16,7 @@ O objetivo é educacional: demonstrar como equações físicas podem ser
 transformadas em uma simulação computacional.
 """
 
+import math
 from dataclasses import dataclass
 
 RAIO_TERRA_M = 6_371_000.0
@@ -43,6 +44,9 @@ class SimuladorLancamento:
         empuxo: float,
         vazao_massa: float,
     ) -> None:
+        for valor in (massa_inicial, massa_seca, empuxo, vazao_massa):
+            if isinstance(valor, bool) or not isinstance(valor, (int, float)) or not math.isfinite(valor):
+                raise ValueError("Os parâmetros devem ser números finitos.")
         if massa_inicial <= 0:
             raise ValueError("A massa inicial deve ser maior que zero.")
         if massa_seca <= 0 or massa_seca >= massa_inicial:
@@ -71,6 +75,8 @@ class SimuladorLancamento:
         passo: float = 0.1,
     ) -> list[EstadoSimulacao]:
         """Executa a simulação e retorna os estados calculados."""
+        if not all(isinstance(valor, (int, float)) and not isinstance(valor, bool) and math.isfinite(valor) for valor in (duracao, passo)):
+            raise ValueError("Duração e passo devem ser números finitos.")
         if duracao <= 0:
             raise ValueError("A duração deve ser maior que zero.")
         if passo <= 0:
@@ -102,11 +108,17 @@ class SimuladorLancamento:
             if dt <= 0:
                 break
 
+            tempo_queima = (massa - self.massa_seca) / self.vazao_massa if combustivel else math.inf
+            dt = min(dt, tempo_queima)
+            if tempo + dt <= tempo:
+                raise ValueError("Passo pequeno demais para a precisão numérica.")
             if combustivel:
                 massa_nova = max(
                     self.massa_seca,
                     massa - self.vazao_massa * dt,
                 )
+                if dt >= tempo_queima:
+                    massa_nova = self.massa_seca
             else:
                 massa_nova = massa
 
