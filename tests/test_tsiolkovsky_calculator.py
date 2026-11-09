@@ -25,6 +25,14 @@ class TestSimuladorFoguete(unittest.TestCase):
         with self.assertRaises(ValueError):
             SimuladorFoguete.calcular_delta_v(3000, 10_000, -1)
 
+    def test_rejeita_nao_finitos(self):
+        for valor in (float("nan"), float("inf"), float("-inf")):
+            for indice in range(3):
+                parametros = [3000, 10_000, 2_000]
+                parametros[indice] = valor
+                with self.subTest(indice=indice, valor=valor), self.assertRaises(ValueError):
+                    SimuladorFoguete.calcular_delta_v(*parametros)
+
 
 if __name__ == "__main__":
     unittest.main()

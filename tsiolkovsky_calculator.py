@@ -21,6 +21,8 @@ class SimuladorFoguete:
         Fórmula:
             Δv = v_e * ln(m_0 / m_f)
         """
+        if not all(isinstance(valor, (int, float)) and not isinstance(valor, bool) and math.isfinite(valor) for valor in (velocidade_exaustao, massa_inicial, massa_final)):
+            raise ValueError("Os parâmetros devem ser números finitos.")
         if velocidade_exaustao <= 0:
             raise ValueError("A velocidade de exaustão deve ser maior que zero.")
         if massa_final <= 0:
